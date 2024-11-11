@@ -1,0 +1,635 @@
+2024-11-11 13:31:00,629:WARNING: * Debugger is active!
+2024-11-11 13:31:00,635:INFO: * Debugger PIN: 153-386-768
+2024-11-11 13:31:11,332:ERROR:Error saat mengambil user: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:31:11,332:ERROR:Exception on /api/users/ [GET]
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: user_model.created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 75, in get
+    users = UserModel.query.all()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_limiter/extension.py", line 1303, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 696, in wrapper
+    resp = f(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 80, in get
+    abort(500, message="Terjadi kesalahan internal server")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 32, in abort
+    original_flask_abort(http_status_code)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/helpers.py", line 272, in abort
+    current_app.aborter(code, *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/werkzeug/exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.InternalServerError: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2024-11-11 13:31:11,345:INFO:127.0.0.1 - - [11/Nov/2024 13:31:11] "[35m[1mGET /api/users/ HTTP/1.1[0m" 500 -
+2024-11-11 13:31:30,814:ERROR:Error saat mengambil user: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:31:30,815:ERROR:Exception on /api/users/ [GET]
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: user_model.created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 75, in get
+    users = UserModel.query.all()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_limiter/extension.py", line 1303, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 696, in wrapper
+    resp = f(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 80, in get
+    abort(500, message="Terjadi kesalahan internal server")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 32, in abort
+    original_flask_abort(http_status_code)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/helpers.py", line 272, in abort
+    current_app.aborter(code, *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/werkzeug/exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.InternalServerError: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2024-11-11 13:31:30,822:INFO:127.0.0.1 - - [11/Nov/2024 13:31:30] "[35m[1mGET /api/users/ HTTP/1.1[0m" 500 -
+2024-11-11 13:31:30,928:INFO:127.0.0.1 - - [11/Nov/2024 13:31:30] "[33mGET /api/ HTTP/1.1[0m" 404 -
+2024-11-11 13:31:33,679:INFO:127.0.0.1 - - [11/Nov/2024 13:31:33] "GET / HTTP/1.1" 200 -
+2024-11-11 13:33:16,549:INFO:127.0.0.1 - - [11/Nov/2024 13:33:16] "GET / HTTP/1.1" 200 -
+2024-11-11 13:33:17,714:ERROR:Error saat mengambil user: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:33:17,715:ERROR:Exception on /api/users/ [GET]
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: user_model.created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 75, in get
+    users = UserModel.query.all()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_limiter/extension.py", line 1303, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 696, in wrapper
+    resp = f(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 80, in get
+    abort(500, message="Terjadi kesalahan internal server")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 32, in abort
+    original_flask_abort(http_status_code)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/helpers.py", line 272, in abort
+    current_app.aborter(code, *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/werkzeug/exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.InternalServerError: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2024-11-11 13:33:17,723:INFO:127.0.0.1 - - [11/Nov/2024 13:33:17] "[35m[1mGET /api/users/ HTTP/1.1[0m" 500 -
+2024-11-11 13:33:19,483:INFO:127.0.0.1 - - [11/Nov/2024 13:33:19] "[33mGET /api/users/<int:id> HTTP/1.1[0m" 404 -
+2024-11-11 13:34:15,938:ERROR:Error saat mengambil user: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:34:15,939:ERROR:Exception on /api/users/ [GET]
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: user_model.created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 75, in get
+    users = UserModel.query.all()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2362, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/session.py", line 2247, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/orm/context.py", line 305, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 489, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_limiter/extension.py", line 1303, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 604, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 696, in wrapper
+    resp = f(*args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 426, in decorated_function
+    rv = self._call_fn(f, *args, **kwargs)
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_caching/__init__.py", line 185, in _call_fn
+    return ensure_sync(fn)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/api.py", line 80, in get
+    abort(500, message="Terjadi kesalahan internal server")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask_restful/__init__.py", line 32, in abort
+    original_flask_abort(http_status_code)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/flask/helpers.py", line 272, in abort
+    current_app.aborter(code, *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/farhanhussein/Documents/simpleapiflask/.venv/lib/python3.13/site-packages/werkzeug/exceptions.py", line 876, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.InternalServerError: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2024-11-11 13:34:15,948:INFO:127.0.0.1 - - [11/Nov/2024 13:34:15] "[35m[1mGET /api/users/ HTTP/1.1[0m" 500 -
+2024-11-11 13:34:17,040:ERROR:Error saat mengambil user 1: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model 
+WHERE user_model.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:34:17,042:INFO:127.0.0.1 - - [11/Nov/2024 13:34:17] "[33mGET /api/users/1 HTTP/1.1[0m" 404 -
+2024-11-11 13:34:44,579:ERROR:Error saat mengambil user 2: (sqlite3.OperationalError) no such column: user_model.created_at
+[SQL: SELECT user_model.id AS user_model_id, user_model.name AS user_model_name, user_model.email AS user_model_email, user_model.created_at AS user_model_created_at, user_model.updated_at AS user_model_updated_at, user_model.status AS user_model_status 
+FROM user_model 
+WHERE user_model.id = ?]
+[parameters: (2,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-11-11 13:34:44,580:INFO:127.0.0.1 - - [11/Nov/2024 13:34:44] "[33mGET /api/users/2 HTTP/1.1[0m" 404 -
+2024-11-11 13:36:25,539:INFO: * Detected change in '/Users/farhanhussein/Documents/simpleapiflask/api.py', reloading
+2024-11-11 13:36:25,908:WARNING: * Debugger is active!
+2024-11-11 13:36:25,913:INFO: * Debugger PIN: 153-386-768
+2024-11-11 13:36:29,636:INFO:127.0.0.1 - - [11/Nov/2024 13:36:29] "[33mGET /api/users/2 HTTP/1.1[0m" 404 -
+2024-11-11 13:36:32,165:INFO:127.0.0.1 - - [11/Nov/2024 13:36:32] "[33mGET /api/users/ HTTP/1.1[0m" 404 -
+2024-11-11 13:36:37,419:INFO:127.0.0.1 - - [11/Nov/2024 13:36:37] "[33mGET /api/users/ HTTP/1.1[0m" 404 -
+2024-11-11 13:36:42,237:INFO:127.0.0.1 - - [11/Nov/2024 13:36:42] "[33mGET /api/users/ HTTP/1.1[0m" 404 -
+2024-11-11 13:36:43,682:INFO:127.0.0.1 - - [11/Nov/2024 13:36:43] "[31m[1mGET /api/users/search HTTP/1.1[0m" 415 -
+2024-11-11 13:36:50,252:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[33mGET /api/users/stats HTTP/1.1[0m" 404 -
+2024-11-11 13:36:50,269:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[36mGET /api/users/stats?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-11 13:36:50,270:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[36mGET /api/users/stats?__debugger__=yes&cmd=resource&f=console.png&s=d1vr1n84HgEwe3O5ngpb HTTP/1.1[0m" 304 -
+2024-11-11 13:36:50,270:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[36mGET /api/users/stats?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-11 13:36:50,270:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[36mGET /api/users/stats?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-11 13:36:50,601:INFO:127.0.0.1 - - [11/Nov/2024 13:36:50] "[33mGET /api/users/ HTTP/1.1[0m" 404 -
+2024-11-11 13:36:51,796:INFO:127.0.0.1 - - [11/Nov/2024 13:36:51] "[31m[1mGET /api/users/bulk HTTP/1.1[0m" 405 -
+2024-11-11 13:37:21,649:INFO: * Detected change in '/Users/farhanhussein/Documents/simpleapiflask/api.py', reloading
+2024-11-11 13:56:05,361:WARNING: * Debugger is active!
+2024-11-11 13:56:05,367:INFO: * Debugger PIN: 153-386-768
+2024-11-11 13:56:34,738:INFO: * Detected change in '/Users/farhanhussein/Documents/simpleapiflask/api.py', reloading
